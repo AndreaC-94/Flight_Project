@@ -2,7 +2,6 @@ package com.solera.flight.services;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +41,6 @@ public class FlightService {
                     default -> origin = CityEnum.ROME;              
                 }
                 if(origin != destination){
-                    System.out.println("Flight number " + i + ", subnum: " + j);
                     Flight flight = new Flight(origin, destination, dates);
                     flightRepository.save(flight);
                 }
@@ -86,5 +84,5 @@ public class FlightService {
         .filter(x -> x.getDestination() == flightFilter.getDestination())
         .filter(x -> x.getDate().isAfter(flightFilter.getDate())).toList();
     }
-    
+
 }
