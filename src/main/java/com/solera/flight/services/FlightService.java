@@ -51,24 +51,24 @@ public class FlightService {
                 p++;
             }
             switch(k) {
-                case 0 -> origin = CityEnum.BERLIN;
-                case 1 -> origin = CityEnum.DUBLIN;
-                case 2 -> origin = CityEnum.LISBON;
-                case 3 -> origin = CityEnum.LONDON;
-                case 4 -> origin = CityEnum.MADRID;
-                case 5 -> origin = CityEnum.PARIS;
-                case 6 -> origin = CityEnum.ROME;
-                case 7 -> origin = CityEnum.TOKYO;
+                case 0 -> destination = CityEnum.BERLIN;
+                case 1 -> destination = CityEnum.DUBLIN;
+                case 2 -> destination = CityEnum.LISBON;
+                case 3 -> destination = CityEnum.LONDON;
+                case 4 -> destination = CityEnum.MADRID;
+                case 5 -> destination = CityEnum.PARIS;
+                case 6 -> destination = CityEnum.ROME;
+                case 7 -> destination = CityEnum.TOKYO;
                 case 8 -> {
-                    origin = CityEnum.WASHINGTON;
+                    destination = CityEnum.WASHINGTON;
                     k = 0;
                 }
                 default -> {
-                    origin = CityEnum.ROME;
+                    destination = CityEnum.ROME;
                     k=0;
                 }         
             }
-            dates.plusDays(1);
+            dates = dates.plusDays(1);
         }
         return "Flights created correctly!";
     }
