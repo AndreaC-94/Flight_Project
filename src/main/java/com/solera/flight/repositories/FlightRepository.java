@@ -1,11 +1,14 @@
 package com.solera.flight.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 import com.solera.flight.entities.Flight;
 
-@Repository
-public interface FlightRepository extends JpaRepository<Flight, Integer> {
+public class FlightRepository {
+
+    public static List<Flight> flights;
     
+    public void save(Flight flight){
+        flights.add(flight);
+    }
 }

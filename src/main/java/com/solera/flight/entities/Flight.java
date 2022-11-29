@@ -3,24 +3,17 @@ package com.solera.flight.entities;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "FLIGHT")
+
 @Data
 @NoArgsConstructor
 public class Flight {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int flightId;
+    private String flightId;
     private String companyName;
     private CityEnum origin;
     private CityEnum destination;
@@ -32,6 +25,7 @@ public class Flight {
     
     public Flight(CityEnum origin, CityEnum destination, LocalDate date){
         Random rd = new Random();
+        this.flightId = UUID.randomUUID().toString();
         this.companyName = rd.nextBoolean() ? "Rayanair":"Iberia";
         this.origin = origin;
         this.destination = destination;
