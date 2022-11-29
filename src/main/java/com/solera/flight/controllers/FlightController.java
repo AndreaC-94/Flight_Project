@@ -55,4 +55,16 @@ public class FlightController {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
+
+    @GetMapping
+    @RequestMapping("/allLocation")
+    public ResponseEntity<?> getLocation(){
+        try{
+            List<String> msg = flightService.getLocation();
+            System.out.println(msg);
+            return new ResponseEntity<List<String>>(msg, HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.solera.flight.services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,9 +81,17 @@ public class FlightService {
         
         return flightRepository.flights
         .stream()
-        .filter(x -> x.getOrigin() == flightFilter.getOrigin())
-        .filter(x -> x.getDestination() == flightFilter.getDestination())
+        .filter(x -> x.getOrigin() == CityEnum.values()[flightFilter.getOrigin()])
+        .filter(x -> x.getDestination() == CityEnum.values()[flightFilter.getDestination()])
         .filter(x -> x.getDate().isAfter(flightFilter.getDate())).toList();
+    }
+
+    public List<String> getLocation() {
+        List<String> cities = new ArrayList<>();
+        for (CityEnum city : CityEnum.values()) {
+            cities.add(city.toString());
+        }
+        return cities;
     }
 
 }

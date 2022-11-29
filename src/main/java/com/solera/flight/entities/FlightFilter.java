@@ -4,20 +4,20 @@ import java.time.LocalDate;
 
 public class FlightFilter {
 
-    private CityEnum origin;
-    private CityEnum destination;
+    private int origin;
+    private int destination;
     private LocalDate date;
 
-    public CityEnum getOrigin() {
+    public int getOrigin() {
         return origin;
     }
-    public void setOrigin(CityEnum origin) {
+    public void setOrigin(int origin) {
         this.origin = origin;
     }
-    public CityEnum getDestination() {
+    public int getDestination() {
         return destination;
     }
-    public void setDestination(CityEnum destination) {
+    public void setDestination(int destination) {
         this.destination = destination;
     }
     public LocalDate getDate() {
