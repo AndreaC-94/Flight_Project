@@ -83,7 +83,7 @@ public class FlightService {
         .stream()
         .filter(x -> x.getOrigin() == CityEnum.values()[flightFilter.getOrigin()])
         .filter(x -> x.getDestination() == CityEnum.values()[flightFilter.getDestination()])
-        .filter(x -> x.getDate().isAfter(flightFilter.getDate().plusDays(-3)) &&
+        .filter(x -> x.getDate().isAfter(flightFilter.getDate().minusDays(3)) &&
          x.getDate().isBefore(flightFilter.getDate().plusDays(3))).toList();
     }
 
