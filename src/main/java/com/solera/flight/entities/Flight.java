@@ -25,7 +25,7 @@ public class Flight {
     
     public Flight(CityEnum origin, CityEnum destination, LocalDate date){
         Random rd = new Random();
-        this.flightId = UUID.randomUUID().toString();
+        this.flightId = UUID.randomUUID().toString().substring(0, 13);
         this.companyName = rd.nextBoolean() ? "Rayanair":"Iberia";
         this.origin = origin;
         this.destination = destination;
