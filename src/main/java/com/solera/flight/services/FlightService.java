@@ -74,12 +74,12 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlight() {
-        return flightRepository.flights;
+        return FlightRepository.flights;
     }
 
     public List<Flight> getFilteredFlight(FlightFilter flightFilter) {
         
-        return flightRepository.flights
+        return FlightRepository.flights
         .stream()
         .filter(x -> x.getOrigin() == CityEnum.values()[flightFilter.getOrigin()])
         .filter(x -> x.getDestination() == CityEnum.values()[flightFilter.getDestination()])
