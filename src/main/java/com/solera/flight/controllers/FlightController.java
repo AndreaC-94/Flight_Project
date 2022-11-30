@@ -45,7 +45,7 @@ public class FlightController {
         }
     }
 
-    @GetMapping
+    @PostMapping
     @RequestMapping("/getFilteredFlight")
     public ResponseEntity<?> getFilteredFlight(@RequestBody FlightFilter flightFilter){
         try{
