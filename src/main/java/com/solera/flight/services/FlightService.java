@@ -46,7 +46,7 @@ public class FlightService {
         return "Flights created correctly!";
     }
 
-    private CityEnum getCity(int i){
+    private CityEnum getCity(int i){ //NOT AN API!!!
         CityEnum city;
         switch(i) {
             case 1 -> city = CityEnum.ROME;
@@ -83,6 +83,13 @@ public class FlightService {
             cities.add(city.toString());
         }
         return cities;
+    }
+
+    public Flight getFlight(String id) throws Exception {
+        for (Flight f : FlightRepository.flights) {
+            if(f.getFlightId().equals(id)) return f;
+        }
+        throw new Exception("We couln't find the flight with id: " + id);
     }
 
 }

@@ -61,8 +61,18 @@ public class FlightController {
     public ResponseEntity<?> getLocation(){
         try{
             List<String> msg = flightService.getLocation();
-            System.out.println(msg);
             return new ResponseEntity<List<String>>(msg, HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
+
+    @GetMapping
+    @RequestMapping("/getFlight")
+    public ResponseEntity<?> getFlight(@RequestBody String id){
+        try{
+            Flight flight = flightService.getFlight(id);
+            return new ResponseEntity<Flight>(flight, HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }
