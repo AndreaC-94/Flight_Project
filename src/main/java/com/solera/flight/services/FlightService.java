@@ -22,55 +22,45 @@ public class FlightService {
         int k=0;
         int p=1;
         CityEnum origin;
-        CityEnum destination = CityEnum.BERLIN;
-        LocalDate dates = LocalDate.of(2022, 11, 29);
+        CityEnum destination = CityEnum.ROME;
+        LocalDate dates = LocalDate.of(2022, 11, 30);
         for(int i=0; i<71; i++){
-            for(int j=1; j<10; j++){
-                switch(p) {
-                    case 1 -> origin = CityEnum.BERLIN;
-                    case 2 -> origin = CityEnum.DUBLIN;
-                    case 3 -> origin = CityEnum.LISBON;
-                    case 4 -> origin = CityEnum.LONDON;
-                    case 5 -> origin = CityEnum.MADRID;
-                    case 6 -> origin = CityEnum.PARIS;
-                    case 7 -> origin = CityEnum.ROME;
-                    case 8 -> origin = CityEnum.TOKYO;
-                    case 9 -> {
-                        origin = CityEnum.WASHINGTON;
-                        p = 0;
-                    }
-                    default -> origin = CityEnum.ROME;              
-                }
+            for(int j=1; j<81; j++){
+                origin = getCity(p);
+                if(p >= 9) p = 0;
+
                 if(origin != destination){
                     Flight flight = new Flight(origin, destination, dates);
                     flightRepository.save(flight);
                 }
                 else{
                     k++;
+                    destination = getCity(k);
+                    if(k >= 9) k = 0;
+                    p++;
                 }
                 p++;
-            }
-            switch(k) {
-                case 0 -> destination = CityEnum.BERLIN;
-                case 1 -> destination = CityEnum.DUBLIN;
-                case 2 -> destination = CityEnum.LISBON;
-                case 3 -> destination = CityEnum.LONDON;
-                case 4 -> destination = CityEnum.MADRID;
-                case 5 -> destination = CityEnum.PARIS;
-                case 6 -> destination = CityEnum.ROME;
-                case 7 -> destination = CityEnum.TOKYO;
-                case 8 -> {
-                    destination = CityEnum.WASHINGTON;
-                    k = 0;
-                }
-                default -> {
-                    destination = CityEnum.ROME;
-                    k=0;
-                }         
             }
             dates = dates.plusDays(1);
         }
         return "Flights created correctly!";
+    }
+
+    private CityEnum getCity(int i){
+        CityEnum city;
+        switch(i) {
+            case 1 -> city = CityEnum.ROME;
+            case 2 -> city = CityEnum.BERLIN;
+            case 3 -> city = CityEnum.PARIS;
+            case 4 -> city = CityEnum.LONDON;
+            case 5 -> city = CityEnum.MADRID;
+            case 6 -> city = CityEnum.LISBON;
+            case 7 -> city = CityEnum.WASHINGTON;
+            case 8 -> city = CityEnum.TOKYO;
+            case 9 -> city = CityEnum.DUBLIN;
+            default -> city = CityEnum.ROME;              
+        }
+        return city;
     }
 
     public List<Flight> getAllFlight() {
